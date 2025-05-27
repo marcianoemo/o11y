@@ -1,0 +1,51 @@
+{
+  "name": "game-catalog-api",
+  "version": "0.0.1",
+  "description": "API de catálogo de jogos para colecionadores",
+  "private": true,
+  "license": "MIT",
+  "engines": {
+    "npm": ">=10.0.0"
+  },
+  "scripts": {
+    "start": "ts-node src/main.ts",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev",
+    "prisma:studio": "prisma studio",
+    "prisma:seed": "ts-node prisma/seed.ts"
+  },
+  "dependencies": {
+    "@nestjs/common": "^10.0.0",
+    "@nestjs/config": "^3.1.1",
+    "@nestjs/core": "^10.0.0",
+    "@nestjs/mapped-types": "^2.0.0",
+    "@nestjs/platform-express": "^10.0.0",
+    "@prisma/client": "^5.7.0",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.0",
+    "reflect-metadata": "^0.1.13",
+    "rxjs": "^7.8.1",
+    "@types/supertest": "^6.0.3",
+    "@types/node": "^22.15.18",
+    "@types/jest": "^29.5.14",
+    "@opentelemetry/api": "1.9.0",
+    "@opentelemetry/sdk-node": "0.201.1",
+    "@opentelemetry/sdk-trace-base": "2.0.1",
+    "@opentelemetry/resources": "2.0.1",
+    "@opentelemetry/semantic-conventions": "1.33.1",
+    "@opentelemetry/exporter-trace-otlp-http": "0.201.1",
+    "@opentelemetry/auto-instrumentations-node": "0.59.0",
+    "@opentelemetry/sdk-metrics": "^2.0.1",
+    "@opentelemetry/exporter-metrics-otlp-http": "^0.201.1",
+    "@opentelemetry/exporter-metrics-otlp-proto": "^0.201.1",
+    "@opentelemetry/exporter-trace-otlp-proto": "^0.201.1",
+    "@prisma/instrumentation": "^6.8.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.17",
+    "@types/node": "^20.3.1",
+    "prisma": "^5.7.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.3"
+  }
+}

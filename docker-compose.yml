@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3333:3333"
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@postgres_app:5432/game_catalog?schema=public
+      - OTEL_SERVICE_NAME=game-catalog-api
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://otel-collector:4318
+    restart: unless-stopped
+    volumes:
+      - ./prisma:/app/prisma
+      - ./src:/app/src
+    networks:
+      - monitoring
+
+networks:
+  monitoring:
+    driver: bridge
+    external: true
