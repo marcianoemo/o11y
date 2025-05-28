@@ -1,7 +1,7 @@
+import { setupObservability } from './observability/instrumentation';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
-import { setupObservability } from './observability/instrumentation';
 
 // Iniciar OpenTelemetry
 setupObservability();
@@ -9,7 +9,9 @@ setupObservability();
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.useGlobalPipes(new ValidationPipe());
-  await app.listen(3333);
-  console.log(`Aplicação rodando em: http://localhost:3333`);
+  const port = process.env.PORT || 3333;
+  await app.listen(port);
+  console.log(`Aplicação rodando em: http://localhost:${port}`);
+  console.log(`Serviço: ${process.env.OTEL_SERVICE_NAME}`);
 }
 bootstrap();
